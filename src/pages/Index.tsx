@@ -1,12 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Header } from '@/components/Header';
+import { StatCards } from '@/components/StatCards';
+import { QuickActions } from '@/components/QuickActions';
+import { ContractList } from '@/components/ContractList';
+import { useApp } from '@/contexts/AppContext';
 
 const Index = () => {
+  const { t } = useApp();
+  
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="page-container">
+      <Header />
+      
+      {/* Stats Overview */}
+      <section className="mb-6">
+        <StatCards />
+      </section>
+      
+      {/* Quick Actions */}
+      <section className="mb-6">
+        <h2 className="section-header">{t('ತ್ವರಿತ ಕ್ರಿಯೆಗಳು', 'Quick Actions')}</h2>
+        <QuickActions />
+      </section>
+      
+      {/* Active Contracts */}
+      <section>
+        <h2 className="section-header">{t('ಸಕ್ರಿಯ ಗುತ್ತಿಗೆಗಳು', 'Active Contracts')}</h2>
+        <ContractList />
+      </section>
     </div>
   );
 };
