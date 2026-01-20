@@ -1,15 +1,11 @@
 import { Settings, Globe } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { useNavigate } from 'react-router-dom';
 
 export function Header() {
   const { t, settings, updateSettings } = useApp();
+  const navigate = useNavigate();
   
   const toggleLanguage = () => {
     updateSettings({ language: settings.language === 'kn' ? 'en' : 'kn' });
@@ -38,6 +34,14 @@ export function Header() {
         <span className="text-xs font-medium bg-secondary px-2 py-1 rounded-full">
           {settings.language === 'kn' ? 'ಕನ್ನಡ' : 'EN'}
         </span>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => navigate('/settings')}
+          className="rounded-full"
+        >
+          <Settings className="w-5 h-5" />
+        </Button>
       </div>
     </header>
   );
